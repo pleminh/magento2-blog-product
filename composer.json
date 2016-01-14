@@ -1,7 +1,7 @@
 {
   "name": "pleminh/magento2-blog-product",
-  "description": "Magento 2 Blog Product",
-  "version": "2.0.0",
+  "description": "Magento 2 Blog Product with Entities FLAT and EAV",
+  "version": "0.1.0",
   "require": {
     "magento/module-backend": "~100.0.0",
     "magento/module-catalog": "~100.0.0"
