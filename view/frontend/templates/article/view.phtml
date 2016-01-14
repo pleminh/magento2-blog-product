@@ -1,0 +1,16 @@
+<?php /** @var \Gemtoo\Blog\Block\Article\ViewArticle $this */?>
+<?php /** @var \Gemtoo\Blog\Model\Article $_article */?>
+<?php $_article = $this->getCurrentArticle();?>
+<div class="article-view">
+    <div class="article-dop">
+        <?php echo $this->formatDate($_article->getDateOfPublication(), \IntlDateFormatter::LONG);?>
+    </div>
+
+    <div class="article-name">
+        <?php echo $_article->getName();?>
+    </div>
+    <br/>
+    <div class="article-content">
+         <?php echo $_article->getContent();?>
+    </div>
+</div>

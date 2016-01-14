@@ -1,0 +1,12 @@
+<?php /** @var \Gemtoo\Blog\Block\Article\ViewArticle\Catalog\Category $this */?>
+<?php $_categoryCollection = $this->getCategoryCollection();?>
+<?php if ($_categoryCollection->count() > 0) :?>
+    <div class="gemtoo-blog-articles-toolbar toolbar top"><?php echo $this->getPagerHtml(); ?></div>
+    <div class="article-categories wrapper">
+        <?php foreach($_categoryCollection as $_category) : ?>
+            <?php /** @var \Magento\Catalog\Model\Category $_category */?>
+            <a href="<?php echo $_category->getUrl()?>"><?php echo $_category->getName();?></a><br />
+        <?php endforeach;?>
+    </div>
+    <div class="gemtoo-blog-articles-toolbar toolbar top"><?php echo $this->getPagerHtml(); ?></div>
+<?php endif;?>

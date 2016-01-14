@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-right" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="content">
+            <block class="Gemtoo\Blog\Block\Article\ViewArticle" name="gemtoo_blog.article.view" template="Gemtoo_Blog::article/view.phtml" />
+            <block class="Gemtoo\Blog\Block\Tabs" name="gemtoo_blog.article.view.details" template="Gemtoo_Blog::tabs.phtml">
+                <block class="Gemtoo\Blog\Block\Article\ViewArticle\Catalog\Product" template="Magento_Catalog::product/list.phtml" group="tabs" name="gemtoo_blog.article.view.product">
+                    <block class="Magento\Catalog\Block\Product\ProductList\Toolbar" name="product_list_toolbar" template="product/list/toolbar.phtml">
+                        <block class="Magento\Theme\Block\Html\Pager" name="product_list_toolbar_pager"/>
+                    </block>
+                    <action method="setToolbarBlockName">
+                        <argument name="name" xsi:type="string">product_list_toolbar</argument>
+                    </action>
+                </block>
+                <block class="Gemtoo\Blog\Block\Article\ViewArticle\Catalog\Category" name="gemtoo_blog.article.view.category" template="Gemtoo_Blog::article/view/catalog/category.phtml" group="tabs" />
+            </block>
+        </referenceBlock>
+    </body>
+</page>

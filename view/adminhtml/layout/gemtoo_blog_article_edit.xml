@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Magento_Catalog::catalog/category-selector.css"/>
+    </head>
+    <update handle="editor"/>
+    <body>
+        <referenceContainer name="content">
+            <block class="Gemtoo\Blog\Block\Adminhtml\Article\Edit" name="gemtoo_blog_article_edit"/>
+            <block class="Magento\Catalog\Block\Adminhtml\Product\Edit\NewCategory" name="new-category" template="Magento_Catalog::catalog/product/edit/category/new/form.phtml"/>
+        </referenceContainer>
+        <referenceContainer name="left">
+            <block class="Gemtoo\Blog\Block\Adminhtml\Article\Edit\Tabs" name="gemtoo_blog_article_tabs">
+                <block class="Gemtoo\Blog\Block\Adminhtml\Article\Edit\Tab\Article" name="gemtoo_blog_article_edit_tab_article"/>
+                <block class="Gemtoo\Blog\Block\Adminhtml\Article\Edit\Tab\Meta" name="gemtoo_blog_article_edit_tab_article_meta"/>
+                <block class="Gemtoo\Blog\Block\Adminhtml\Article\Edit\Tab\Stores" name="gemtoo_blog_article_edit_tab_article_stores"/>
+                <block class="Gemtoo\Blog\Block\Adminhtml\Article\Edit\Tab\Product" name="gemtoo_blog_article_edit_tab_article_product"/>
+                <block class="Gemtoo\Blog\Block\Adminhtml\Article\Edit\Tab\Category" name="gemtoo_blog_article_edit_tab_article_category"/>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">article</argument>
+                    <argument name="block" xsi:type="string">gemtoo_blog_article_edit_tab_article</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">meta</argument>
+                    <argument name="block" xsi:type="string">gemtoo_blog_article_edit_tab_article_meta</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">stores</argument>
+                    <argument name="block" xsi:type="string">gemtoo_blog_article_edit_tab_article_stores</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">product</argument>
+                    <argument name="block" xsi:type="string">gemtoo_blog_article_edit_tab_article_product</argument>
+                </action>
+                <action method="addTab">
+                    <argument name="name" xsi:type="string">categories</argument>
+                    <argument name="block" xsi:type="string">gemtoo_blog_article_edit_tab_article_category</argument>
+                </action>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

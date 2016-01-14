@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="product.info.details">
+            <block class="Gemtoo\Blog\Block\Catalog\Product\ListArticle" name="catalog.product.list.gemtoo.blog.article" template="Gemtoo_Blog::catalog/product/article.phtml"  group="detailed_info" />
+        </referenceContainer>
+    </body>
+</page>

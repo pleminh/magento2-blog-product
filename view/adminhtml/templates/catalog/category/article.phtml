@@ -1,0 +1,73 @@
+<?php /** @var \Gemtoo\Blog\Block\Adminhtml\Catalog\Category\Tab\Article $this */?>
+<?php echo $this->getChildHtml() ?>
+<div class="no-display">
+    <input type="hidden" name="category_gemtoo_blog_articles" id="in_category_gemtoo_blog_articles" value=""/>
+</div>
+<?php if(($block = $this->getLayout()->getBlock('category.gemtoo_blog.article.grid')) && ($_gridJsObject = $block->getJsObjectName())): ?>
+    <script type="text/javascript">
+        require([
+            "mage/adminhtml/grid"
+        ], function(){
+            var categoryGemtooBlogArticles = $H(<?php echo json_encode($block->getSelectedArticles()) ?>);
+            $('in_category_gemtoo_blog_articles').value = Object.toJSON(categoryGemtooBlogArticles);
+
+            function registerCategoryGemtooBlogArticle(grid, element, checked){
+                if(checked){
+                    if(element.positionElement){
+                        element.positionElement.disabled = false;
+                        categoryGemtooBlogArticles.set(element.value, element.positionElement.value);
+                    }
+                }
+                else{
+                    if(element.positionElement){
+                        element.positionElement.disabled = true;
+                    }
+                    categoryGemtooBlogArticles.unset(element.value);
+                }
+                $('in_category_gemtoo_blog_articles').value = Object.toJSON(categoryGemtooBlogArticles);
+                grid.reloadParams = {'category_gemtoo_blog_articles[]':categoryGemtooBlogArticles.keys()};
+            }
+            function categoryGemtooBlogArticleRowClick(grid, event){
+
+                var trElement = Event.findElement(event, 'tr');
+                var isInput   = Event.element(event).tagName == 'INPUT';
+                if(trElement){
+                    var checkbox = Element.getElementsBySelector(trElement, 'input');
+                    if(checkbox[0]){
+                        var checked = isInput ? checkbox[0].checked : !checkbox[0].checked;
+                        <?php echo $_gridJsObject ?>.setCheckboxChecked(checkbox[0], checked);
+                    }
+                }
+            }
+            function gemtooBlogArticlePositionChange(event){
+                var element = Event.element(event);
+                if(element && element.checkboxElement && element.checkboxElement.checked){
+                    categoryGemtooBlogArticles.set(element.checkboxElement.value, element.value);
+                    $('in_category_gemtoo_blog_articles').value = Object.toJSON(categoryGemtooBlogArticles);
+                }
+            }
+
+            var tabIndex = 1000;
+            function categoryGemtooBlogArticleRowInit(grid, row){
+                var checkbox = $(row).getElementsByClassName('checkbox')[0];
+                var position = $(row).getElementsByClassName('input-text')[0];
+                if(checkbox && position){
+                    checkbox.positionElement = position;
+                    position.checkboxElement = checkbox;
+                    position.disabled = !checkbox.checked;
+                    position.tabIndex = tabIndex++;
+                    Event.observe(position,'keyup',gemtooBlogArticlePositionChange);
+                }
+            }
+
+
+            <?php echo $_gridJsObject ?>.rowClickCallback = categoryGemtooBlogArticleRowClick;
+            <?php echo $_gridJsObject ?>.initRowCallback = categoryGemtooBlogArticleRowInit;
+            <?php echo $_gridJsObject ?>.checkboxCheckCallback = registerCategoryGemtooBlogArticle;
+            <?php echo $_gridJsObject ?>.rows.each(function(row){
+                categoryGemtooBlogArticleRowInit(<?php echo $_gridJsObject ?>, row)
+            });
+        });
+
+    </script>
+<?php endif;?>

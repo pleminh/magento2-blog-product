@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../../lib/internal/Magento/Framework/App/etc/routes.xsd">
+    <router id="standard">
+        <route id="gemtoo_blog" frontName="gemtoo_blog">
+            <module name="Gemtoo_Blog" before="Magento_Backend" />
+        </route>
+    </router>
+</config>

@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<!--
+{{License}}
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add id="Gemtoo_Blog::blog" title="Blog" module="Gemtoo_Blog" sortOrder="65" resource="Gemtoo_Blog::blog"/>
+        <add id="Gemtoo_Blog::article" title="Articles" module="Gemtoo_Blog" sortOrder="10" action="gemtoo_blog/article" resource="Gemtoo_Blog::article" parent="Gemtoo_Blog::blog" />
+    </menu>
+</config>

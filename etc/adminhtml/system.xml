@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+    <system>
+        <tab id="gemtoo_blog" sortOrder="2000">
+            <label>Blog</label>
+        </tab>
+        <section id="gemtoo_blog" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Blog</label>
+            <tab>gemtoo_blog</tab>
+            <resource>Gemtoo_Blog::blog</resource>
+            <group id="article" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Articles</label>
+                <field id="breadcrumbs" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable Breadcrumbs</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="meta_title" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Article list meta title</label>
+                </field>
+                <field id="meta_description" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Article list meta description</label>
+                </field>
+                <field id="meta_keywords" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Article list meta keywords</label>
+                </field>
+                <field id="list_url" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Article list url</label>
+                </field>
+                <field id="url_prefix" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Article url prefix</label>
+                </field>
+                <field id="url_suffix" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Article url suffix</label>
+                </field>
+                <field id="rss" type="select" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Enable RSS</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="rss_cache" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>RSS Cache Lifetime</label>
+                    <comment>in seconds</comment>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

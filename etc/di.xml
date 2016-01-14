@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Framework\App\Rss\RssManagerInterface">
+        <arguments>
+            <argument name="dataProviders" xsi:type="array">
+                <item name="articles" xsi:type="string">Gemtoo\Blog\Block\Article\ListArticle\Rss</item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="GemtooBlogGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="GemtooBlogArticleGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Gemtoo\Blog\Model\ResourceModel\Article\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">GemtooBlogGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <type name="Gemtoo\Blog\Model\ResourceModel\Article\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">gemtoo_blog_article</argument>
+            <argument name="eventPrefix" xsi:type="string">gemtoo_blog_article_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">article_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Gemtoo\Blog\Model\ResourceModel\Article</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="gemtoo_blog_article_listing_data_source" xsi:type="string">Gemtoo\Blog\Model\ResourceModel\Article\Grid\Collection</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

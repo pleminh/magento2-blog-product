@@ -1,0 +1,4 @@
+<?php /** @var \Gemtoo\Blog\Block\Article\ListArticle\Rss\Link $this */?>
+<?php if($this->isRssEnabled()): ?>
+    <a href="<?php echo $this->getLink() ?>" class="action link rss"><span><?php echo __('Subscribe to RSS Feed') ?></span></a>
+<?php endif; ?>

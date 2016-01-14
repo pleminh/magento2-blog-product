@@ -1,0 +1,15 @@
+<?php /** @var \Gemtoo\Blog\Block\Catalog\Category\ListArticle $this */?>
+<?php $_articles = $this->getArticleCollection();?>
+<?php if ($_articles && $_articles->count() > 0) :?>
+<div class="block-content content" id="<?php echo $this->getAnchorName();?>">
+    <h2><?php echo __('Articles')?></h2>
+    <div><?php echo $this->getPagerHtml();?></div>
+    <?php /** @var \Gemtoo\Blog\Model\Article $_article */?>
+    <?php foreach ($_articles as $_article) : ?>
+        <div class="item">
+            <a href="<?php echo $_article->getArticleUrl();?>"><?php echo $_article->getName();?></a>
+        </div>
+    <?php endforeach; ?>
+    <div><?php echo $this->getPagerHtml();?></div>
+</div>
+<?php endif;?>
